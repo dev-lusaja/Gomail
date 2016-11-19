@@ -1,19 +1,29 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
 	"log"
+	"os"
+	"net/http"
+	"encoding/json"
+	"io/ioutil"
 
 	"github.com/gorilla/mux"
 
 	"./routes"
+	"./models"
 )
 
-var port int
+var server models.Server
 
 func init() {
-	port = 5000
+	config_file, e := ioutil.ReadFile("configs/server.json")
+	if e != nil {
+		log.Println(e)
+		os.Exit(1)
+	}
+
+	json.Unmarshal(config_file, &server)
 }
 
 func main() {
@@ -21,8 +31,8 @@ func main() {
 
 	// Load routes
 	routes.Load(r)
-	log.Println(fmt.Sprintf("Listening on Port %d", port))
-	listen_port := fmt.Sprintf(":%d", port)
+	log.Println(fmt.Sprintf("Listening on Port %d", server.Port))
+	listen_port := fmt.Sprintf(":%d", server.Port)
 
 	// Start server
 	http.ListenAndServe(listen_port, r)

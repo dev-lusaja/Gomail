@@ -5,3 +5,7 @@ type Config struct {
 	Secret_api_key string
 	Public_api_key string
 }
+
+type Server struct {
+	Port int
+}
