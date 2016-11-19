@@ -1,55 +1,55 @@
 #GOMAIL
 
-Es un microservicio que permitirá conectarnos al API de MailGun para realizar envíos de correos de una manera práctica y rápida, GOMAIL nos permite hacer:
+Service that will allow us to connect to the MailGun API to send mails in a practical and fast way.
 
-	* Múltiple solicitud de envíos.
-	* Envío de correos múltiples.
-	* Respuesta a la(s) solicitudes.
-	
+	* Multiple sending of emails.
+	* Multiple answers.
 
 
-Formato de la solicitud
------------------------
-Las solicitudes se envían a través del metodo POST, hacía el endPoint:
+Resuqest format
+---------------
 
-  >http://localhost:5000/api/v1/Gomail
+The requests are sent through the POST method, to the endPoint:
 
-Toda solicitud debe tener la siguiente estructura:
+  >http://<ip>:<port>/api/v1/gomail
+
+Every request must have the following structure:
 
 ~~~json
 {
 	"data" : [
 		{
-			"from" : "yyyyyyy@hotmail.com",
+			"from" : "foo@barr.com",
 			"subject" : "Test",
 			"body" : "Hello World",
-			"to" : "xxxxxxxxx@gmail.com"
+			"to" : "bar@foo.com"
 		},
 		{
-			"from" : "yyyyyyy@hotmail.com",
-			"subject" : "Test2",
-			"body" : "Hello World2",
-			"to" : "zzzzzzzz@gmail.com"
+			"from" : "foo2@bar2.com",
+			"subject" : "Test 2",
+			"body" : "Hello World 2",
+			"to" : "bar2@foo2.com"
 		}
 	]
 }
 ~~~
 
-Formato de la respuesta 
------------------------
-Una vez culminado el o los envíos, GOMAIL dara una respuesta con la siguiente estructura:
+Response format
+---------------
+
+Once completed the shipments, GOMAIL will give a response with the following structure:
 
 ~~~json
 {
   "responses": [
     {
-      "id": "<20150817005339.6788.94173@mailgun.org>",
-      "to": "xxxxxxxx@gmail.com",
+      "id": "<20150817005339.xxxx.zzzz@mailgun.org>",
+      "to": "foo@bar.com",
       "msg": "Queued. Thank you."
     },
     {
-      "id": "<20150817005340.47422.6102@mailgun.org>",
-      "to": "zzzzzzzz@gmail.com",
+      "id": "<20150817005340.xxxx.zzzz@mailgun.org>",
+      "to": "bar@foo.com",
       "msg": "Queued. Thank you."
     }
   ]
