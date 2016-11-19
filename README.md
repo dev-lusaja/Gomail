@@ -6,12 +6,12 @@ Service that will allow us to connect to the MailGun API to send mails in a prac
 	* Multiple answers.
 
 
-Resuqest format
+Request format
 ---------------
 
 The requests are sent through the POST method, to the endPoint:
 
-  >http://<ip>:<port>/api/v1/gomail
+  >http://ip:port/api/v1/gomail
 
 Every request must have the following structure:
 
