@@ -5,23 +5,25 @@ import (
 	"log"
 	"net/http"
 	"encoding/json"
+	"os"
 	
 	"github.com/mailgun/mailgun-go"
 
 	"../models"
 )
 
-// configuration variables Mailgun
 var (
-	secret_api_key string
-	public_api_key string
-	domain_name string
+	config models.Config
 )
 
 func init() {
-	domain_name = ""
-	secret_api_key = ""
-	public_api_key = ""
+	config_file, e := ioutil.ReadFile("configs/sender.json")
+	if e != nil {
+		log.Println(e)
+		os.Exit(1)
+	}
+
+	json.Unmarshal(config_file, &config)
 }
 
 func Sender(w http.ResponseWriter, r *http.Request) {
@@ -29,7 +31,7 @@ func Sender(w http.ResponseWriter, r *http.Request) {
 	var Response []models.ItemResponse
 	var Json_response []byte
 	// open connection with Mailgun
-	gun := mailgun.NewMailgun(domain_name, secret_api_key, public_api_key)
+	gun := mailgun.NewMailgun(config.Domain, config.Secret_api_key, config.Public_api_key)
 	// we set the content-type header to JSON for answers
 	w.Header().Set("Content-Type", "application/json")
 	// reading the body content
