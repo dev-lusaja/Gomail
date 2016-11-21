@@ -9,7 +9,7 @@ import (
 	
 	"github.com/mailgun/mailgun-go"
 
-	"../models"
+	"github.com/dev-lusaja/gomail/models"
 )
 
 var (

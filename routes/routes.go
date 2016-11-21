@@ -3,7 +3,7 @@ package routes
 import(
 	"github.com/gorilla/mux"
 
-	"../controllers"
+	"github.com/dev-lusaja/gomail/controllers"
 )
 
 func Load(r *mux.Router) {

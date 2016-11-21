@@ -10,8 +10,8 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"./routes"
-	"./models"
+	"github.com/dev-lusaja/gomail/routes"
+	"github.com/dev-lusaja/gomail/models"
 )
 
 var server models.Server
