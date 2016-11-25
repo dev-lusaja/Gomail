@@ -62,6 +62,7 @@ func Sender(w http.ResponseWriter, r *http.Request) {
 		}
 		// send
 		m := mailgun.NewMessage(sender, subject, body, recipient)
+		m.SetHtml(body)
 		response, id, send_error := gun.Send(m)
 		if send_error != nil {
 			log.Println(send_error)
