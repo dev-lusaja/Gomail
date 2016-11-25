@@ -20,14 +20,14 @@ Every request must have the following structure:
 	"data" : [
 		{
 			"from" : "foo@barr.com",
-			"subject" : "Test",
+			"subject" : "Plain content",
 			"body" : "Hello World",
 			"to" : "bar@foo.com"
 		},
 		{
 			"from" : "foo2@bar2.com",
-			"subject" : "Test 2",
-			"body" : "Hello World 2",
+			"subject" : "Html content",
+			"body" : "<b>Hello</b><br>World",
 			"to" : "bar2@foo2.com"
 		}
 	]
